@@ -1,0 +1,14 @@
+package com.po;
+//JavaBeans设计原则：
+//1.公有类
+public class Users {
+	//2.属性私有
+	private String username;
+	private String password;
+	
+	//3.无参的公有构造方法
+	public Users(){}
+	
+	//4.getter和setter封装
+	
+}

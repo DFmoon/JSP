@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>javabeantest2</title>
+</head>
+<body>
+	<h1>通过jsp动作实现JavaBean</h1>
+	<hr>
+	<jsp:useBean id="user" class="com.po.Users" scope="page"/>
+	
+	<!-- 1.根据表单匹配所有属性 -->
+	<%--<jsp:setProperty property="*" name="user" />--%>
+	
+	<!-- 2.根据表单匹配部分属性名 -->
+	<%--<jsp:setProperty property="username" name="user"/>--%>
+	
+	<!-- 3.手动匹配,和表单没有关系 -->
+	<%--<jsp:setProperty property="username" name="user" value="admin"/>--%>
+	
+	<!-- 4.根据URL传入的参数给属性赋值，没有匹配的属性需要通过表单来赋值（第二行） -->
+	<jsp:setProperty property="username" name="user" param="sex"/>
+	<jsp:setProperty property="password" name="user"/><!-- 从表单获取password -->
+	
+	用户名：<%=user.getUsername() %><br>
+	密码：<%=user.getPassword() %><br>
+</body>
+</html>

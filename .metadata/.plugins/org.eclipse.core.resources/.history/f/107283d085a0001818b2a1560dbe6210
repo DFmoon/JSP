@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page import="com.po.Users" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>scope</title>
+</head>
+<body>
+	<h1>javabean的四大作用域</h1>
+	<hr>
+	<!-- 借助javabean的scope范围来获取属性值 -->
+	
+	<%--<jsp:useBean id="user" class="com.po.Users" scope="application" />--%>
+	<jsp:useBean id="user" class="com.po.Users" scope="session" />
+	<%--<jsp:useBean id="user" class="com.po.Users" scope="request" />--%>
+	
+	用户名：<jsp:getProperty property="username" name="user" /><br>
+	密码：<jsp:getProperty property="password" name="user" /><br>
+	
+	<hr>
+	<!-- 借助内置对象来获取属性值，效果和上述一样 -->
+	
+	<%--
+	用户名：<%=((Users)application.getAttribute("user")).getUsername() %><br>
+	密码：<%=((Users)application.getAttribute("user")).getPassword() %><br>
+	--%>
+	
+	用户名：<%=((Users)session.getAttribute("user")).getUsername() %><br>
+	密码：<%=((Users)session.getAttribute("user")).getPassword() %><br>
+	
+	<%--
+	用户名：<%=((Users)application.getAttribute("user")).getUsername() %><br>
+	密码：<%=((Users)application.getAttribute("user")).getPassword() %><br>
+	--%>
+</body>
+</html>
